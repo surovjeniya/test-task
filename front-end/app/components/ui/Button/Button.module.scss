@@ -1,0 +1,116 @@
+$backgroundDisabled: #F5F2F2;
+$backgroundDefault: #A0627B;
+$backgroundWhite: #FFFFFF;
+
+$colorWhite: #FFFFFF;
+$colorRed: #CA6A6A;
+$colorGreen: #37A834;
+$colorBlue: #029AE4;
+$colorRegular: #A0627B;
+$colorBlack: #131212;
+
+$fontweightNormal: 400;
+$fontweightBold: 700;
+
+$fontsizeM: 12px;
+$fontsizeL: 16px;
+
+$borderRadiusM: 4px;
+$borderRadiusL: 12px;
+
+$boxshadowOne: 2px 1px 4px rgba(0, 0, 0, 0.3);
+$boxshadowTwo: 0px 6.07407px 12.1481px rgba(46, 103, 140, 0.12);
+$boxshadowThree: 2px 1px 4px rgba(99, 93, 96, 0.3);
+$boxshadowFour: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+.button {
+    font-style: normal;
+    border: 0.5px solid #A0627B;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fixed {
+    width: 250px;
+    height: auto;
+}
+.fill {
+    width: 100%;
+    height: auto;
+}
+
+.boxshadowOne {
+    box-shadow: $boxshadowOne;
+}
+.boxshadowTwo {
+    box-shadow: $boxshadowTwo;
+}
+.boxshadowThree {
+    box-shadow: $boxshadowThree;
+}
+.boxshadowFour {
+    box-shadow: $boxshadowFour;
+}
+
+.borderRadiusM {
+    border-radius: $borderRadiusM;
+}
+
+.borderRadiusL {
+    border-radius: $borderRadiusL;
+}
+.fontsizeM {
+    font-size: $fontsizeM;
+}
+
+.fontsizeL {
+    font-size: $fontsizeL;
+}
+
+.fontweightNormal {
+    font-weight: $fontweightNormal;
+}
+
+.fontweightBold {
+    font-weight: $fontweightBold;
+}
+.backgroundDisabled {
+    background-color: $backgroundDisabled;
+}
+
+.backgroundDefault {
+    background-color: $backgroundDefault;
+}
+
+.backgroundWhite {
+    background-color: $backgroundWhite;
+}
+
+.colorBlack {
+    color: $colorBlack;
+}
+
+.colorRegular {
+    color: $colorRegular
+}
+
+.colorBlue {
+    color: $colorBlue
+}
+
+.colorWhite {
+    color: $colorWhite;
+}
+
+.colorGreen {
+    color: $colorGreen;
+}
+
+.colorRed {
+    color: $colorRed;
+}
+
+

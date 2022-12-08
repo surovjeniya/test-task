@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  # app:
+  #   container_name: app
+  #   build:
+  #     context: .
+  #   env_file:
+  #     - .development.env
+  #   volumes:
+  #     - .:/app
+  #     - /app/node_modules
+  #   ports:
+  #     - 5000:5000
+  #   command: npm run start:dev
+  #   depends_on:
+  #     - mongodb
+  #   restart: always
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ./database:/data/db
+    ports:
+      - 27017:27017
+    restart: unless-stopped

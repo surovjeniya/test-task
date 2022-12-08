@@ -1,0 +1,38 @@
+.registration {
+    background-color: #FFF;
+    margin: 0 auto;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px 0;
+    gap:25px
+}
+
+.gender {
+    background-color: #F5F2F2;
+    padding: 25px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    gap: 10px;
+    box-shadow: 2px 1px 4px rgba(0, 0, 0, 0.3);
+        
+    
+}
+
+.birth {
+    background-color: #FFF;
+        padding: 25px 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 25px;
+        gap: 10px;
+        box-shadow: 2px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.radio {
+    color:red
+}
