@@ -1,0 +1,65 @@
+version: '3.8'
+
+volumes:
+  redis-data-volume:
+    driver: local
+    name: ${REDIS_DATA_VOLUME_NAME}
+networks:
+  infra-network:
+    driver: bridge
+    name: ${INFRA_NETWORK_NAME}
+
+services:
+  browserless-service:
+    profiles: ['browserless/redis','prod']
+    image: ${BROWSERLESS_SERVICE_IMAGE}
+    container_name: ${BROWSERLESS_SERVICE_CONTAINER_NAME}
+    hostname: ${BROWSERLESS_SERVICE_HOST_NAME}
+    environment:
+      - DEFAULT_HEADLESS=false
+      - DEFAULT_IGNORE_HTTPS_ERRORS=true
+      - DISABLE_AUTO_SET_DOWNLOAD_BEHAVIOR=true
+      - PORT=${BROWSERLESS_SERVICE_PORT}
+      - PRE_REQUEST_HEALTH_CHECK=true
+      - EXIT_ON_HEALTH_FAILURE=true
+      - WORKSPACE_DELETE_EXPIRED=true
+    restart: unless-stopped
+    networks:
+      - infra-network
+    ports:
+      - ${BROWSERLESS_SERVICE_PORT}:${BROWSERLESS_SERVICE_PORT}
+
+  api-service:
+    image: ${API_SERVICE_IMAGE}
+    container_name: ${API_SERVICE_CONTAINER_NAME}
+    networks:
+      - infra-network
+    profiles: ['prod']
+    build: 
+      context: ../app
+      dockerfile: Dockerfile
+    ports:
+      - "${API_SERVICE_PORT}:${API_SERVICE_PORT}"
+    restart: unless-stopped
+    depends_on:
+      - redis-service
+      - browserless-service
+    env_file: ../app/.env
+
+  redis-service:
+    image: ${REDIS_SERVICE_IMAGE}
+    container_name: ${REDIS_SERVICE_CONTAINER_NAME}
+    hostname: ${REDIS_SERVICE_HOST_NAME}
+    profiles: ['browserless/redis','prod']
+    restart: unless-stopped
+    networks:
+      - infra-network
+    volumes: 
+      - redis-data-volume:/data
+    environment:
+      - REDIS_PORT=${REDIS_SERVICE_PORT}
+    ports:
+      - ${REDIS_SERVICE_PORT}:${REDIS_SERVICE_PORT}
+    command: redis-server --requirepass ${REDIS_SERVICE_PASSWORD}
+
+  
