@@ -19,7 +19,8 @@ export const checkCaptchaBalanceMiddleware = async (
         clientKey: process.env.TWO_CAPTCHA_TOKEN,
       }
     );
-    if (data.balance < 15) {
+    console.log(data.balance);
+    if (data.balance <= 0) {
       return next(
         ApiError.BadRequest(`Balance is over.Current balance ${data.balance}`)
       );

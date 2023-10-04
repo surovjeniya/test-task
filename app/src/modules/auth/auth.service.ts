@@ -45,7 +45,6 @@ export default class AuthService {
     ]);
 
     const cookies = await page.cookies();
-    await page.screenshot({ path: "response.png", fullPage: true });
     await browser.close();
 
     if (cookies.find((item) => item.name === "auth")) {

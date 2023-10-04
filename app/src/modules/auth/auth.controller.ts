@@ -15,7 +15,7 @@ export default class AuthController {
       }
       const { login, password } = req.body;
       const authData = await authService.login(login, password);
-      return res.json(authData);
+      return res.send(authData);
     } catch (error) {
       next(error);
     }
